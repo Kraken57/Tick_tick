@@ -62,7 +62,7 @@ const initForm = {
           mt: 10,
         }}
       >      <Paper elevation={10} sx={{ padding: '15px',backgroundColor :"rgba(255,255,255,0)"} }> 
-        <Stack mb={6} spacing={4} alignItems="center" textAlign="center">
+        <Stack mb={6} spacing={4} alignItems="side" textAlign="center">
           <ImageEl src={LogoImg} alt="FlowBoard" />
           <Typography color="rgba(255,255,255, .6)">
             Visualize Your Workflow for Increased Productivity.
