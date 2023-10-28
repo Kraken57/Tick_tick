@@ -7,7 +7,7 @@ import {
     IconButton,
   } from "@mui/material";
   import ImageEl from "../../components/utils/ImageEl";
-  import LogoImg from "../../assets/logo.svg";
+  import LogoImg from "../../assets/logo2.svg";
   import LogoutIcon from "@mui/icons-material/ExitToApp";
   import CreateBoardIcon from "@mui/icons-material/AddCircle";
   import { signOut } from "firebase/auth";
@@ -17,9 +17,9 @@ import {
     const isXs = useMediaQuery((theme) => theme.breakpoints.only("xs"));
   
     return (
-      <AppBar position="static">
+      <AppBar position="static" >
         <Toolbar
-          sx={{
+          sx={{ 
             justifyContent: "space-between",
           }}
         >
@@ -27,9 +27,11 @@ import {
             sx={{
               height: "25px",
             }}
-            src={LogoImg}
-            alt="Flowboard"
+            src={LogoImg} 
+            alt="Tick-tick"
           />
+          
+          
           <Stack direction="row" spacing={2}>
             {isXs ? (
               <>
