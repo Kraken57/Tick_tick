@@ -1,16 +1,19 @@
-const { functions } = require("firebase-functions");
-const { initializeApp } = require("firebase-admin");
+const {
+  onDocumentCreated,
+  onDocumentDeleted,
+} = require("firebase-functions/v2/firestore");
+const { initializeApp } = require("firebase-admin/app");
 const { getFirestore, FieldValue } = require("firebase-admin/firestore");
 
 initializeApp();
 
-exports.createBoardData = functions.firestore
-  .document("users/{uid}/boards/{boardId}")
-  .onCreate((snapshot, context) => {
-    const { uid, boardId } = context.params;
+exports.createBoardData = onDocumentCreated(
+  "users/{uid}/boards/{boardId}",
+  async (event) => {
+    const { uid, boardId } = event.params;
     const firestore = getFirestore();
 
-    return firestore.doc(`users/${uid}/boardsData/${boardId}`).set({
+    return await firestore.doc(`users/${uid}/boardsData/${boardId}`).set({
       tabs: {
         todos: [],
         inProgress: [],
@@ -18,16 +21,15 @@ exports.createBoardData = functions.firestore
       },
       lastUpdated: FieldValue.serverTimestamp(),
     });
-  });
+  }
+);
 
+exports.deleteBoardData = onDocumentDeleted(
+  "users/{uid}/boards/{boardId}",
+  async (event) => {
+    const { uid, boardId } = event.params;
+    const firestore = getFirestore();
 
-
-// exports.deleteBoardData = onDocumentDeleted(
-//   "users/{uid}/boards/{boardId}",
-//   async (event) => {
-//     const { uid, boardId } = event.params;
-//     const firestore = getFirestore();
-
-//     return await firestore.doc(`users/${uid}/boardsData/${boardId}`).delete();
-//   }
-// );
+    return await firestore.doc(`users/${uid}/boardsData/${boardId}`).delete();
+  }
+);
