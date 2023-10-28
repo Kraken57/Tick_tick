@@ -1,16 +1,20 @@
 import { useState } from 'react';
-import {Container, Stack, TextField, Button, Typography } from '@mui/material';
-import LogoImg from '../../assets/logo.svg';
+
+import {Container, Stack, TextField, Button, Typography , Paper, Grid} from '@mui/material';
+import LogoImg from '../../assets/logo2.svg';
 import ImageEl from '../../components/utils/ImageEl';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../firebase';
 import useStore from '../../store';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';//imported both the icon 
 
 const initForm = {
     email: "",
     password: "",
   };
   const AuthScreen = () => {
+    const [visible, setvisible] = useState(false);
     const [loading, setLoading] = useState(false);
     const [isLogin, setIsLogin] = useState(true);
     const [form, setForm] = useState(initForm);
@@ -41,6 +45,15 @@ const initForm = {
         setLoading(false);
       }
     };
+     // here i have added this visible and setvisible for eye button 
+     const EndAdornment = ({visible,setvisible}) => {
+      return (<inputAdorment position ="end">
+        <iconbutton onClick={()=>setvisible(!visible)}>
+      { visible ? <VisibilityIcon/>: <VisibilityOffIcon/>}
+        </iconbutton>
+      </inputAdorment>);
+  };
+  //i have added a paper to make login box
   
     return (
       <Container
@@ -48,7 +61,7 @@ const initForm = {
         sx={{
           mt: 10,
         }}
-      >
+      >      <Paper elevation={10} sx={{ padding: '15px',backgroundColor :"rgba(255,255,255,0)"} }> 
         <Stack mb={6} spacing={4} alignItems="center" textAlign="center">
           <ImageEl src={LogoImg} alt="FlowBoard" />
           <Typography color="rgba(255,255,255, .6)">
@@ -66,9 +79,12 @@ const initForm = {
           />
           <TextField
             value={form.password}
-            type="password"
+            type ={visible ? "Text":"password"}
             name="password"
             onChange={handleChange}
+            InputProps= {{
+              endAdornment: <EndAdornment visible={visible} setvisible={setvisible}/>,
+              }}
             label="Password"
           />
           <Button
@@ -90,6 +106,7 @@ const initForm = {
         >
           {authText}
         </Typography>
+        </Paper>
       </Container>
     );
   };
