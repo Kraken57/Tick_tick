@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "taskmanager-a2173"
-  }
+    "default": "taskmanager-a2173",
+    "production": "taskmanager-a2173"
+  },
+  "targets": {},
+  "etags": {}
 }
