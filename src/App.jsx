@@ -11,7 +11,6 @@ import AppLoader from "./components/layout/AppLoader";
 import AuthScreen from "./screens/AuthScreen";
 import BoardsScreen from "./screens/BoardsScreen";
 import BoardScreen from "./screens/BoardScreen";
-import TaskFinal from "./screens/TaskFinal";
 
 //
 import PublicOnlyRoute from "./components/utils/PublicOnlyRoute";
@@ -46,17 +45,8 @@ const App = () => {
             element={<PrivateRoute Component={BoardsScreen} />}
           />
           <Route
-            path="/TaskFinal./src./app"
-            element={<PrivateRoute Component={app.tsx} />}
-          />
-          {/* <Route
             path="/boards/:boardId"
             element={<PrivateRoute Component={BoardScreen} />}
-          />
-          <Route /> */}
-          <Route
-            path="/boards/:boardId"
-            element={<PrivateRoute Component={TaskFinal} />}
           />
           <Route />
         </Routes>

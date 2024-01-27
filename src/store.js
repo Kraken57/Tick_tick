@@ -7,7 +7,7 @@ const store = (set) => ({
   isLoggedIn: false,
   boards: [],
   areBoardsFetched: false,
-  
+
   setToastr: (toastrMsg) => set({ toastrMsg }, false, "setToastr"),
   setBoards: (boards) =>
     set({ boards, areBoardsFetched: true }, false, "setBoards"),

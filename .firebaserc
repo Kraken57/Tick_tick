@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "taskmanager-a2173",
+    "default": "flowboard-b4020",
     "production": "taskmanager-a2173"
   },
   "targets": {},

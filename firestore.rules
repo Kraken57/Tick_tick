@@ -10,16 +10,10 @@ service cloud.firestore {
     // requests to your Firestore database will be denied.
     //
     // Make sure to write security rules for your app before that time, or else
-    // all client requests to your Firestore database will be denied until you update
+    // all client requests to your Firestore database will be denied until you Update
     // your rules
-    
-    // Allow read and write access at the 'users/{uid}/boards/{boardId}' path
-    // without any time-based restrictions.
-    match /users/{uid}/boards/{boardId} {
-      allow read, write;
-    }
     match /{document=**} {
-      allow read, write: if request.time < timestamp.date(2023, 11, 26);
+      allow read, write: if request.time < timestamp.date(2024, 2, 26);
     }
   }
 }

@@ -5,12 +5,12 @@ import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA9tGL0tVCGTjWFDT--jAgRnD8GHmj8IeM",
-  authDomain: "taskmanager-a2173.firebaseapp.com",
-  projectId: "taskmanager-a2173",
-  storageBucket: "taskmanager-a2173.appspot.com",
-  messagingSenderId: "1030547554622",
-  appId: "1:1030547554622:web:95427b7a4a18c604582c6f"
+  apiKey: "AIzaSyAx3vyLES2BTs7vVZirNQveYd4ebU3xJkA",
+  authDomain: "flowboard-b4020.firebaseapp.com",
+  projectId: "flowboard-b4020",
+  storageBucket: "flowboard-b4020.appspot.com",
+  messagingSenderId: "432183901951",
+  appId: "1:432183901951:web:3b2613751e84f1822896ca"
 };
 
 // Initialize Firebase

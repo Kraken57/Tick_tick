@@ -1,29 +1,19 @@
-const admin = require("firebase-admin");
-const functions = require("firebase-functions");
+/**
+ * Import function triggers from their respective submodules:
+ *
+ * const {onCall} = require("firebase-functions/v2/https");
+ * const {onDocumentWritten} = require("firebase-functions/v2/firestore");
+ *
+ * See a full list of supported triggers at https://firebase.google.com/docs/functions
+ */
 
-admin.initializeApp();
+const {onRequest} = require("firebase-functions/v2/https");
+const logger = require("firebase-functions/logger");
 
-const db = admin.database();
+// Create and deploy your first functions
+// https://firebase.google.com/docs/functions/get-started
 
-exports.createBoardData = functions.database
-  .ref("/users/{uid}/boards/{boardId}")
-  .onCreate(async (snapshot, context) => {
-    const { uid, boardId } = context.params;
-    const boardsDataRef = db.ref(`users/${uid}/boardsData/${boardId}`);
-
-    try {
-      // Set initial data in the "boardsData" location
-      await boardsDataRef.set({
-        tabs: {
-          todos: [],
-          inProgress: [],
-          completed: [],
-        },
-        lastUpdated: admin.database.ServerValue.TIMESTAMP,
-      });
-      return null; // Returning null indicates success
-    } catch (error) {
-      console.error("Error creating boardsData:", error);
-      throw error; // Rethrow the error for further handling
-    }
-  });
+// exports.helloWorld = onRequest((request, response) => {
+//   logger.info("Hello logs!", {structuredData: true});
+//   response.send("Hello from Firebase!");
+// });
