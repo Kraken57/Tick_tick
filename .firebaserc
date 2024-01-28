@@ -1,7 +1,7 @@
 {
   "projects": {
-    "default": "flowboard-b4020",
-    "production": "taskmanager-a2173"
+    "default": "taskmanager-a2173",
+    "production": "flowboard-b4020"
   },
   "targets": {},
   "etags": {}
